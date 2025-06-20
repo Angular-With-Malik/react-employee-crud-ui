@@ -1,0 +1,24 @@
+.header-container {
+    height: 60px;
+    background-color: #5c5fff;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.header-profile {
+    font-size: 38px;
+}
+
+.footer-container {
+    background-color: #5c5fff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
