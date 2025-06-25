@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Employee from "../model/employee";
+import { _createEmployee, _getAllEmployee } from "../service/employeeService";
+import { AxiosResponse } from "axios";
 
 const EmployeeForm = () => {
 
     const [currentEmployee, setCurrentEmployee] = useState<Employee>({
-        id: '',
+        id: 0,
         firstName: '',
         lastName: '',
         designation: '',
@@ -27,8 +29,35 @@ const EmployeeForm = () => {
         })
     }
 
-    const saveEmployee = () => {
+    const saveEmployee = async () => {
+        let employeeId = await getMaxId().then((result: number) => {
+            console.log(result);
+            return result + 1
+        })
+
+        console.log('After Max Id', employeeId);
+
+        currentEmployee.id = employeeId
         console.log(currentEmployee);
+        // Execute create function from service
+        _createEmployee(currentEmployee).then((response: AxiosResponse) => {
+            console.log(response);
+        })
+    }
+
+    const getMaxId = (): Promise<number> => {
+        return new Promise((resolve) => {
+            _getAllEmployee().then((result: AxiosResponse) => {
+                let allEmployee: Employee[] = result.data
+                let allEmployeeId: number[] = allEmployee.map((employee: Employee) => {
+                    return Number(employee.id)
+                })
+                console.log(allEmployeeId);
+                let maxId: number = Math.max(...allEmployeeId)
+                console.log(maxId);
+                resolve(maxId)
+            })
+        })
     }
 
     return (
