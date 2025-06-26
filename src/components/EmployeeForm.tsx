@@ -6,7 +6,7 @@ import { AxiosResponse } from "axios";
 const EmployeeForm = () => {
 
     const [currentEmployee, setCurrentEmployee] = useState<Employee>({
-        id: 0,
+        id: '',
         firstName: '',
         lastName: '',
         designation: '',
@@ -37,7 +37,7 @@ const EmployeeForm = () => {
 
         console.log('After Max Id', employeeId);
 
-        currentEmployee.id = employeeId
+        currentEmployee.id = String(employeeId)
         console.log(currentEmployee);
         // Execute create function from service
         _createEmployee(currentEmployee).then((response: AxiosResponse) => {

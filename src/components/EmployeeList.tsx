@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Employee from "../model/employee";
-import { _getAllEmployee } from "../service/employeeService";
+import { _deleteEmployeeById, _getAllEmployee } from "../service/employeeService";
 import { AxiosResponse } from "axios";
 
 const EmployeeList = () => {
@@ -9,11 +9,25 @@ const EmployeeList = () => {
 
     useEffect(() => {
         console.log('Hello Employee List');
-        _getAllEmployee().then((response: AxiosResponse) => { 
+        getAllEmployee()
+    }, [])
+
+    const getAllEmployee = () => {
+        _getAllEmployee().then((response: AxiosResponse) => {
             console.log(response.data);
             setAllEmployee(response.data)
         })
-    }, [])
+    }
+
+    const deleteEmployeeById = (employeeId: string) => {
+        console.log(employeeId);
+        _deleteEmployeeById(employeeId).then((response: AxiosResponse) => {
+            console.log(response);
+            if (response.status === 200) {
+                getAllEmployee()
+            }
+        })
+    }
 
     return (
         <table className="table">
@@ -42,7 +56,8 @@ const EmployeeList = () => {
                                 <a className="text-primary">
                                     <i className="bi bi-pen-fill"></i>
                                 </a>
-                                <a className="m-3 text-danger">
+                                <a className="m-3 text-danger"
+                                    onClick={() => deleteEmployeeById(employee.id)}>
                                     <i className="bi bi-trash-fill"></i>
                                 </a>
                                 <a className="text-secondary">

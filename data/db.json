@@ -2,61 +2,16 @@
   "employees": [
     {
       "id": "1",
-      "firstName": "Geeta",
-      "lastName": "Dev",
-      "designation": "UI Developer",
-      "city": "Pune",
-      "salary": 15000,
-      "age": 25
+      "firstName": "tyu",
+      "lastName": "ytuy",
+      "designation": "uyuy",
+      "salary": "gu",
+      "age": "g",
+      "city": "g"
     },
     {
       "id": "2",
-      "firstName": "Seeta",
-      "lastName": "Dev",
-      "designation": "Jr Developer",
-      "city": "Pune",
-      "salary": 20000,
-      "age": 27
-    },
-    {
-      "id": 3,
-      "firstName": "Ganesh",
-      "lastName": "Dev",
-      "designation": "Developer",
-      "salary": "1222",
-      "age": "21",
-      "city": "Pune"
-    },
-    {
-      "id": 4,
-      "firstName": "Ganesh",
-      "lastName": "Dev",
-      "designation": "Developer",
-      "salary": "1222",
-      "age": "21",
-      "city": "Pune"
-    },
-    {
-      "id": 5,
-      "firstName": "Ganesh",
-      "lastName": "Dev",
-      "designation": "Developer",
-      "salary": "1222",
-      "age": "21",
-      "city": "Pune"
-    },
-    {
-      "id": "51",
-      "firstName": "hbjhkb",
-      "lastName": "",
-      "designation": "",
-      "salary": "",
-      "age": "",
-      "city": ""
-    },
-    {
-      "id": "511",
-      "firstName": "hbjhkb",
+      "firstName": "Two",
       "lastName": "",
       "designation": "",
       "salary": "",

@@ -10,3 +10,7 @@ export const _getAllEmployee = (): Promise<AxiosResponse> => {  // Function Sign
 export const _createEmployee = (employee: Employee): Promise<AxiosResponse> => {
     return axios.post(url, employee)
 }
+
+export const _deleteEmployeeById = (id: string): Promise<AxiosResponse> => {
+    return axios.delete(url + '/' + id)
+}

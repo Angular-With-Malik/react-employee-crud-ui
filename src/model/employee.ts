@@ -1,5 +1,5 @@
 declare class Employee {
-    id: number
+    id: string
     firstName: string
     lastName: string
     designation: string
