@@ -3,7 +3,9 @@ import Employee from "../model/employee";
 import { _deleteEmployeeById, _getAllEmployee } from "../service/employeeService";
 import { AxiosResponse } from "axios";
 
-const EmployeeList = () => {
+const EmployeeList = (props: { setCurrentEmployee: Function }) => {
+
+    const { setCurrentEmployee } = props
 
     const [allEmployee, setAllEmployee] = useState<Employee[]>([])
 
@@ -53,7 +55,8 @@ const EmployeeList = () => {
                             <td>{employee.salary}</td>
                             <td>{employee.age}</td>
                             <td>
-                                <a className="text-primary">
+                                <a className="text-primary"
+                                    onClick={() => setCurrentEmployee(employee)}>
                                     <i className="bi bi-pen-fill"></i>
                                 </a>
                                 <a className="m-3 text-danger"

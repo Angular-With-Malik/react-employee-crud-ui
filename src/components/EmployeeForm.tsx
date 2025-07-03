@@ -3,17 +3,22 @@ import Employee from "../model/employee";
 import { _createEmployee, _getAllEmployee } from "../service/employeeService";
 import { AxiosResponse } from "axios";
 
-const EmployeeForm = () => {
+const EmployeeForm = (props: {
+    currentEmployee: Employee,
+    setCurrentEmployee: Function
+}) => {
 
-    const [currentEmployee, setCurrentEmployee] = useState<Employee>({
-        id: '',
-        firstName: '',
-        lastName: '',
-        designation: '',
-        salary: '',
-        age: '',
-        city: ''
-    })
+    const { currentEmployee, setCurrentEmployee } = props
+
+    // const [currentEmployee, setCurrentEmployee] = useState<Employee>({
+    //     id: '',
+    //     firstName: '',
+    //     lastName: '',
+    //     designation: '',
+    //     salary: '',
+    //     age: '',
+    //     city: ''
+    // })
 
     const handleChange = (elementValue: React.ChangeEvent<HTMLInputElement>) => {
         console.log('We are in handleChange() function');
