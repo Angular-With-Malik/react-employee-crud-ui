@@ -3,21 +3,28 @@ import Employee from "../model/employee";
 import { _deleteEmployeeById, _getAllEmployee } from "../service/employeeService";
 import { AxiosResponse } from "axios";
 
-const EmployeeList = (props: { setCurrentEmployee: Function }) => {
+const EmployeeList = (props: {
+    setCurrentEmployee: Function,
+    isEmployeeCreatedOrUpdated: boolean,
+    setEmployeeCreatedOrUpdated: Function
+}) => {
 
-    const { setCurrentEmployee } = props
+    const { setCurrentEmployee, isEmployeeCreatedOrUpdated,
+        setEmployeeCreatedOrUpdated
+    } = props
 
     const [allEmployee, setAllEmployee] = useState<Employee[]>([])
 
     useEffect(() => {
         console.log('Hello Employee List');
         getAllEmployee()
-    }, [])
+    }, [isEmployeeCreatedOrUpdated])
 
     const getAllEmployee = () => {
         _getAllEmployee().then((response: AxiosResponse) => {
             console.log(response.data);
-            setAllEmployee(response.data)
+            setAllEmployee(response.data);
+            setEmployeeCreatedOrUpdated(false)
         })
     }
 

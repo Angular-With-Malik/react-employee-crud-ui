@@ -10,15 +10,6 @@
       "city": "Pune"
     },
     {
-      "id": "3",
-      "firstName": "ABC",
-      "lastName": "PQR",
-      "designation": "",
-      "salary": "",
-      "age": "",
-      "city": ""
-    },
-    {
       "id": "4",
       "firstName": "Gopal",
       "lastName": "Jadhav",
@@ -35,6 +26,15 @@
       "salary": "21000",
       "age": "31",
       "city": "Pune"
+    },
+    {
+      "id": "6",
+      "firstName": "Rajesh",
+      "lastName": "Jadhav",
+      "designation": "Sr. Developer",
+      "salary": "500000",
+      "age": "35",
+      "city": "Pune 5446"
     }
   ]
 }

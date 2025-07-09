@@ -14,3 +14,7 @@ export const _createEmployee = (employee: Employee): Promise<AxiosResponse> => {
 export const _deleteEmployeeById = (id: string): Promise<AxiosResponse> => {
     return axios.delete(url + '/' + id)
 }
+
+export const _updatEmployee = (employee: Employee): Promise<AxiosResponse> => {
+    return axios.put(url + '/' + employee.id, employee)
+}

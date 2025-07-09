@@ -18,6 +18,9 @@ const App = () => {
     city: ''
   })
 
+  const [isEmployeeCreatedOrUpdated, setEmployeeCreatedOrUpdated] =
+    useState<boolean>(false)
+
   return (
     <div>
       <div className="header-container">
@@ -25,16 +28,20 @@ const App = () => {
       </div>
       <div>
         {/* JSON.stringify - Used to convert object into string  */}
-        {JSON.stringify(currentEmployee)}
+        {/* {JSON.stringify(currentEmployee)} */}
+        {/* {JSON.stringify(isEmployeeCreatedOrUpdated)} */}
       </div>
       <div className="row mt-4 m-4">
         <div className="col-md-3">
           <EmployeeForm currentEmployee={currentEmployee}
-            setCurrentEmployee={(data: Employee) => setCurrentEmployee(data)} />
+            setCurrentEmployee={(data: Employee) => setCurrentEmployee(data)}
+            setEmployeeCreatedOrUpdated={(flag: boolean) => setEmployeeCreatedOrUpdated(flag)} />
         </div>
         <div className="col-md-9">
           <EmployeeList
-            setCurrentEmployee={(data: Employee) => setCurrentEmployee(data)} />
+            setCurrentEmployee={(data: Employee) => setCurrentEmployee(data)}
+            isEmployeeCreatedOrUpdated={isEmployeeCreatedOrUpdated}
+            setEmployeeCreatedOrUpdated={(flag: boolean) => setEmployeeCreatedOrUpdated(flag)} />
         </div>
       </div>
       <div className="footer-container">

@@ -1,24 +1,17 @@
 import { useState } from "react";
 import Employee from "../model/employee";
-import { _createEmployee, _getAllEmployee } from "../service/employeeService";
+import { _createEmployee, _getAllEmployee, _updatEmployee } from "../service/employeeService";
 import { AxiosResponse } from "axios";
 
 const EmployeeForm = (props: {
     currentEmployee: Employee,
     setCurrentEmployee: Function
+    setEmployeeCreatedOrUpdated: Function
 }) => {
 
-    const { currentEmployee, setCurrentEmployee } = props
-
-    // const [currentEmployee, setCurrentEmployee] = useState<Employee>({
-    //     id: '',
-    //     firstName: '',
-    //     lastName: '',
-    //     designation: '',
-    //     salary: '',
-    //     age: '',
-    //     city: ''
-    // })
+    const { currentEmployee, setCurrentEmployee,
+        setEmployeeCreatedOrUpdated
+    } = props
 
     const handleChange = (elementValue: React.ChangeEvent<HTMLInputElement>) => {
         console.log('We are in handleChange() function');
@@ -34,7 +27,17 @@ const EmployeeForm = (props: {
         })
     }
 
-    const saveEmployee = async () => {
+    const saveEmployee = () => {
+        console.log(currentEmployee);
+        // === is used to check the values and type
+        if (currentEmployee.id === '') {
+            createEmployee()
+        } else {
+            updateEmployee()
+        }
+    }
+
+    const createEmployee = async () => {
         let employeeId = await getMaxId().then((result: number) => {
             console.log(result);
             return result + 1
@@ -47,6 +50,20 @@ const EmployeeForm = (props: {
         // Execute create function from service
         _createEmployee(currentEmployee).then((response: AxiosResponse) => {
             console.log(response);
+            if (response.status === 201) {
+                setEmployeeCreatedOrUpdated(true)
+                clearForm()
+            }
+        })
+    }
+
+    const updateEmployee = () => {
+        _updatEmployee(currentEmployee).then((response: AxiosResponse) => {
+            console.log(response);
+            if (response.status === 200) {
+                setEmployeeCreatedOrUpdated(true)
+                clearForm()
+            }
         })
     }
 
@@ -62,6 +79,18 @@ const EmployeeForm = (props: {
                 console.log(maxId);
                 resolve(maxId)
             })
+        })
+    }
+
+    const clearForm = () => {
+        setCurrentEmployee({
+            id: '',
+            firstName: '',
+            lastName: '',
+            designation: '',
+            salary: '',
+            age: '',
+            city: ''
         })
     }
 
@@ -111,7 +140,10 @@ const EmployeeForm = (props: {
                     </button>
                 </div>
                 <div className="col-md-6">
-                    <button className="btn btn-outline-secondary w-100">CLEAR</button>
+                    <button className="btn btn-outline-secondary w-100"
+                        onClick={() => clearForm()}>
+                        CLEAR
+                    </button>
                 </div>
             </div>
         </div>
